@@ -252,7 +252,13 @@
       </h2>
       <div class="subtitle">
         <h3>
-          <b>Overall NeuroTalk frameworks</b><a name="bts-frameworks"></a>
+          <b>Comparison of two approaches for reconstructing sentences from brain signals. 
+            (a) In the WIS approach, words were sequentially predicted from 2 seconds of discrete brain signals to form a sentence, 
+            which is reconstructed by a language model. 
+            (b) The natural sentence generation approach employs brain signals from naturally spoken sentences with a 2-second window for each word.
+            The model predicts words by shifting the window in 200 ms increments and gives output when the confidence of the predicted word was above 0.5. 
+            When the window has decoded the entire time domain of the sentence, 
+            the predicted words were used to compute the keyword density to find the most appropriate sentence among the target sentences.</b><a name="bts-frameworks"></a>
         </h3>
         <div class="subsubtitle">
           <img src="./image/figure1.jpg" width="800" />
@@ -263,7 +269,15 @@
       <br />
       <div class="subtitle">
         <h3>
-          <b>The architecture details</b><a name="architecture-detail"></a>
+          <b>Overview of the proposed sentence reconstruction framework from EEG signals. 
+            During the training phase, the measured EEG signals are processed through the temporal convolutional network to extract features, 
+            which are then passed through the linear layer to generate 20-dimensional vectors representing each word. 
+            The model is trained using mean squared error loss between the generated vectors and the corresponding word embeddings. 
+            In the inference phase, the trained model receives EEG signals as an input and generates vectors for each word. 
+            The cosine similarity between these vectors and each of the word embeddings is computed, predicting the word with the highest similarity. 
+            The predicted words are then sequentially given as an input into a language model to reconstruct the sentence. 
+            Finally, the reconstructed sentence is transformed into a speech signal using a pretrained text-to-speech model and a pretrained vocoder, 
+            resulting in the output of sentence-level audio of the user intention.</b><a name="architecture-detail"></a>
         </h3>
         <div class="subsubtitle">
           <img src="./image/figure2.jpg" width="800" />
